@@ -20,8 +20,8 @@
       <button type="submit" class="btn btn-success" name="submit">
 	  <span class="glyphicon glyphicon-search"></span> Search</button>
     </form>
-	<a style="float:right" href="<?php echo base_url().'Admin/paydetail';?>"class="btn btn-link btn-lg">
-	<span class="glyphicon glyphicon-link"></span> GO BACK</a>
+	<a style="float:right" href="<?php echo base_url().'Admin';?>"class="btn btn-link btn-lg">
+	<span class="glyphicon glyphicon-link"></span> Go Back</a>
 	<!--<p> <?php echo $message; ?> </p>-->
 	<form  action="" method="post">
      <table class="table">
@@ -46,11 +46,22 @@
 			    <td><?php echo $row->mode;?></td>
 			   <td><?php echo $row->amount;?></td>
 			   <td><?php echo $row->date1;?></td>
+            <?php 
+			   if($row->extension=='application/pdf') {
+			   	     ?>
 			   <td>
-			   <a href="<?php echo base_url('file/'.$row->file)?>" target="_blank">click here to be</a></td>
-				   <!--a href="<?php echo base_url('Admin/proof/'.$row->MEMBER_ID);?>"class="btn btn-info btn-sm">
-				    <span class="glyphicon glyphicon-open"></span> open</a-->
+			   		<a href = "<?php echo base_url('file/'.$row->file);?>" class = "btn btn-info btn-sm" target="_blank">
+				   <span class="glyphicon glyphicon-open"></span> open</a>
+			     	<!--a href="" >click here to view pdf.</a>-->
+			   </td>
+			<?php }
+				else {
+				?>
+				<td>
+					<a href = "<?php echo base_url('Admin/proof/'.$row->MEMBER_ID);?>" class = "btn btn-info btn-sm">
+				   <span class="glyphicon glyphicon-open"></span> open</a>
 				</td>
+				<?php } ?>  
 				<td>
 				<?php echo $row->verify;?>
 				 </td>
