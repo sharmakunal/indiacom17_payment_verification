@@ -14,14 +14,23 @@
 	    <?php if($result!=null) 
 		
 		{ ?>
-		<!--<td><img style="float:center" "width:450px;height=450px";" src= "<?php echo base_url('file/'.$result->file)?>"></td>-->
-		<td><a href="<?php echo base_url('file/'.$result->file)?>" target="_blank">click here to be</a></td>
+		<td><img style="float:center" "width:450px;height=450px";" src= "<?php echo base_url('file/'.$result->file)?>"></td>
+		
 		
 		<?php 
 		}//if
-			else{
+		else
+		{
 				echo "<td> no image available</td>";
 			}
 		?>
 	</body>										
 	</html>
+
+
+
+
+
+
+	<!--
+		<td><a href="<?php //echo base_url('file/'.$result->file)?>" <!--target="_blank">click here to be</a></td> -->

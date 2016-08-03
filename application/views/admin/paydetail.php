@@ -36,9 +36,12 @@
 	   </thead>
 	   <tbody>
 	   <?php if($result==null) {
-		   echo "<script> alert('NOT FOUND') </script>";		   
-		 
-	   } else{ ?>
+		   echo "<script> alert('NOT FOUND') </script>"; ?>	   
+	      <a style="float:left" href="<?php echo base_url().'Admin';?>"class="btn btn-link btn-lg">
+	      <span class="glyphicon glyphicon-link"></span> go back</a>	   
+	 <?php  } else{ ?>
+	 	 <a style="float:left" href="<?php echo base_url().'Admin';?>"class="btn btn-link btn-lg">
+	      <span class="glyphicon glyphicon-link"></span> Go Back</a>
 	   <?php foreach($result as $row):?>
 	   
 	       <tr>
@@ -46,11 +49,25 @@
 			    <td><?php echo $row->mode;?></td>
 			   <td><?php echo $row->amount;?></td>
 			   <td><?php echo $row->date1;?></td>
+			   
+			   <?php 
+			   if ($row->extension=='application/pdf') {
+			   	?>
 			   <td>
-			   <a href="<?php echo base_url('file/'.$row->file)?>" target="_blank">click here to be</a></td>
-				  <!-- <a href="<?php echo base_url('Admin/proof/'.$row->MEMBER_ID);?>"class="btn btn-info btn-sm">
-				   <span class="glyphicon glyphicon-open"></span> open</a>-->
+			   		<a href = "<?php echo base_url('file/'.$row->file);?>" class = "btn btn-info btn-sm" target="_blank">
+				   <span class="glyphicon glyphicon-open"></span> open</a>
+			   	<!--a href="" >click here to view pdf.</a>-->
+			   </td>
+				<?php }
+				else {
+				?>
+				<td>
+					<a href = "<?php echo base_url('Admin/proof/'.$row->MEMBER_ID);?>" class = "btn btn-info btn-sm">
+				
+				
+				   <span class="glyphicon glyphicon-open"></span> open</a>
 				</td>
+				<?php } ?>  
 				<td>
 				<?php echo $row->verify;?>
 				 </td>
@@ -63,8 +80,9 @@
 	   } ?>
 		</tbody>
 	   </table>
+	 <!-- <?php echo $this->pagination->create_links(); ?> -->
 	   </form>
-	  <!-- <?php echo $links(); ?>-->
+	  
 	   
 </div>
 </body>
@@ -82,3 +100,7 @@
 		       </div>
 			    </td>
 -->				
+
+
+
+<!-- 

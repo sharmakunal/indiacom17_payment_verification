@@ -1,31 +1,41 @@
 <?php 
 class Admin extends MY_Controller 
 {
-
-	/*public function index()
-	{
-	 $this->load->view('admin/paydetail');
-      
-	}*/
-    public function __construct(){
+     public function __construct()
+     {
 		parent::__construct();
 		
+	 }
+
+
+	public function index()
+	{
+
+        $data   = array();
+        $this->load->model('model_admin');
+        $data['result'] = $this->model_admin->get_contents();
+        $this->load->view('admin/paydetail', $data);
+		
 	}
-	
+  	
 	/*public function paydetail()
 	{
 		$this->load->library('pagination');
 		$this->load->model('model_admin');
-        $config   = array();
+      //  $config   = array();
 		$config ['base_url']=base_url().'Admin/paydetail';
+		//echo $config['base_url'];
 		$config ['total_rows']= $this->model_admin->count_member();
-		$config ['per_page']=4;
-		$this->pagination->initialize($config);
+		//echo $config['total_rows'];
+		$config ['per_page']=3;
+		//if($this->pagination->initialize($config))
+			//print_r($config);
+		
         $data['result'] = $this->model_admin->get_contents($config['per_page'], $this->uri->segment(3));
-		$data['links'] = $this->pagination->create_links();
-        $this->load->view('admin/paydetail', $data);			
+		//$data['links'] = $this->pagination->create_links();
+        //$this->load->view('admin/paydetail', $data);			
     }*/
-
+/*
 public function paydetail()
 	{
 		
@@ -35,7 +45,7 @@ public function paydetail()
         $this->load->view('admin/paydetail', $data);
         
 				
-	}
+	}*/
 
 	public function proof($MEMBER_ID)
 	{
@@ -109,9 +119,27 @@ public function paydetail()
 		);
 		$this->load->model('model_admin');
 		$this->model_admin->getalldata($MEMBER_ID,$data);
-		$this->paydetail();
+		$this->index();
 
 		
     }
 }
 ?>
+
+
+
+       <!--$data   = array();
+        $this->load->library('pagination');
+        $this->load->model('model_admin');
+        $data['result'] = $this->model_admin->get_contents();
+       
+		$config ['base_url']=base_url().'Admin/paydetail';	  
+		$config ['total_rows']= $this->model_admin->count_member();      
+		$config ['per_page']=3;
+		if(!$this->pagination->initialize($config))
+			print_r($config);
+		$data['result'] = $this->model_admin->get_contents($config['per_page'], $this->uri->segment(3));
+		$this->load->view('admin/paydetail', $data);
+
+-->
+       

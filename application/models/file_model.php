@@ -5,7 +5,7 @@ class file_model extends CI_Model
 		parent::__construct();
 	}
     
-	public function insert_file($MEMBER_ID,$mode,$amount,$date1,$filename)
+	public function insert_file($MEMBER_ID,$mode,$amount,$date1,$filename,$extension)
     {
          $data=array
 		 (
@@ -13,7 +13,8 @@ class file_model extends CI_Model
 			'mode'=>$mode,
 			'amount'=>$amount,
 			'date1'=>$date1,
-		    'file'=> $filename    			
+		    'file'=> $filename,
+		    'extension'=>$extension    			
 		 );
 		    $this->db->insert('member',$data);
 			return TRUE;
